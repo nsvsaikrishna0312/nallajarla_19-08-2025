@@ -23,6 +23,9 @@ The system works with hourly updating data sources and ensures reports reflect *
   - `/get_report` → Returns report status or completed report in CSV.  
 
 ---
+## Sample Report
+**[Store Monitoring Report](https://drive.google.com/file/d/1e_x5DoFkl0mjufUIe6zoeCz69pX1Gvm6/view?usp=sharing)**
+
 
 ## ⚙️ Requirements
 - Python **3.9+**
