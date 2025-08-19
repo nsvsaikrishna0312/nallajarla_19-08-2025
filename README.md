@@ -1,21 +1,52 @@
-# Take Home Interview - Store Monitoring
+# 🍽️ Store Monitoring
 
-## Description
-This project implements backend APIs to monitor the uptime and downtime of restaurants based on their business hours. The system processes data from multiple sources, stores it in a database, and generates reports for restaurant owners to analyze store activity.
+## 📌 Description
+This project implements backend APIs to monitor restaurant uptime and downtime relative to their business hours.  
+It processes **poll data (active/inactive status)**, **business hours**, and **time zone information** to generate **uptime/downtime reports** for store owners.  
 
-## Features
-- Ingests and processes data from CSV files.
-- Stores data in a database for dynamic querying.
-- Generates reports with uptime and downtime statistics for stores.
-- Provides APIs to trigger report generation and retrieve the report status or data.
+The system works with hourly updating data sources and ensures reports reflect **accurate, interpolated results** even with incomplete polling data.  
 
-## Requirements
-- Python 3.x
-- pip
-- PostgreSQL (or any other relational database)
-- Libraries: Flask/FastAPI, SQLAlchemy, Pandas, etc.
+---
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/{nsvsaikrishna0312}/{nallajarla_19-08-2025}.git
+## ✨ Features
+- **Data ingestion**: Reads poll data, business hours, and timezone info from CSVs.  
+- **Database storage**: Uses PostgreSQL (or SQLite for local testing).  
+- **Timezone handling**: Converts UTC timestamps into each store’s local time.  
+- **Business hour filtering**: Calculates uptime/downtime only within store business hours (defaults to 24×7 if missing).  
+- **Interpolation logic**: Extends uptime/downtime status between polls.  
+- **Dynamic reports**: Computes uptime and downtime for:
+  - Last hour
+  - Last day
+  - Last week  
+- **APIs**:
+  - `/trigger_report` → Starts report generation asynchronously.  
+  - `/get_report` → Returns report status or completed report in CSV.  
+
+---
+
+## ⚙️ Requirements
+- Python **3.9+**
+- pip (Python package manager)
+- PostgreSQL (recommended) or SQLite (for testing)
+
+### Python Libraries
+- **Flask** or **FastAPI** → REST API framework  
+- **SQLAlchemy** → ORM for DB integration  
+- **Pandas** → Data processing and CSV handling  
+- **pytz / zoneinfo** → Timezone conversion  
+- **Celery / Threading** → Background job execution  
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/nsvsaikrishna0312/nallajarla_19-08-2025.git
+cd nallajarla_19-08-2025
+
+### 2. Create virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
