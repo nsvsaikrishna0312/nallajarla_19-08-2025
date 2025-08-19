@@ -123,7 +123,7 @@ store_id,uptime_last_hour,downtime_last_hour,uptime_last_day,downtime_last_day,u
 
 ### 📊 Visualization
 
-** Dashboard with uptime/downtime trends**
-** Grafana**
+**Dashboard with uptime/downtime trends**
+**Grafana**
 
 
