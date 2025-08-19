@@ -44,9 +44,86 @@ The system works with hourly updating data sources and ensures reports reflect *
 ```bash
 git clone https://github.com/nsvsaikrishna0312/nallajarla_19-08-2025.git
 cd nallajarla_19-08-2025
+```
 
 ### 2. Create virtual environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+### 4. Add the CSV Data to put in DB by creating a folder data
+
+### 5. Run the application
+```bash
+flask run app.py
+```
+
+## 🚀 API Usage
+### 1. Trigger Report
+
+** Endpoint:
+``` http
+POST /trigger_report
+```
+
+** Response:
+``` bash
+{ "report_id": "random_string_123" }
+```
+
+### 2. Get Report
+
+** Endpoint:
+```http
+GET /get_report?report_id=random_string_123
+```
+
+** If still running:
+```http
+{ "status": "Running" }
+```
+
+** If complete (returns CSV):
+``` csv
+store_id, uptime_last_hour, uptime_last_day, uptime_last_week,
+downtime_last_hour, downtime_last_day, downtime_last_week
+```
+
+** 📊 Example Output (CSV)
+```
+store_id,uptime_last_hour,downtime_last_hour,uptime_last_day,downtime_last_day,uptime_last_week,downtime_last_week
+1,60,0,24,0,160,8
+2,45,15,20,4,130,30
+```
+
+
+## 🧠 Design Decisions
+
+** Timezone-aware processing: UTC → local conversion for correct alignment with business hours.
+
+** Extrapolation logic: Last known status extended until next poll (or end of business hours).
+
+** Trigger + Poll architecture: Enables scalable, long-running report computations.
+
+** Database-first approach: Ensures efficient querying and continuous updates from CSV streams.
+
+
+## 🔮 Future Improvements
+
+### ⏱ Real-Time Data Processing
+
+** Replace CSV ingestion with Kafka or Pub/Sub
+** Move to near real-time updates
+
+### 📊 Visualization
+
+** Dashboard with uptime/downtime trends
+** Grafana
+
+
