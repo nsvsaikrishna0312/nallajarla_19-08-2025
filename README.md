@@ -67,35 +67,35 @@ flask run app.py
 ## 🚀 API Usage
 ### 1. Trigger Report
 
-** Endpoint:
+** Endpoint**:
 ``` http
 POST /trigger_report
 ```
 
-** Response:
+** Response**:
 ``` bash
 { "report_id": "random_string_123" }
 ```
 
 ### 2. Get Report
 
-** Endpoint:
+** Endpoint**:
 ```http
 GET /get_report?report_id=random_string_123
 ```
 
-** If still running:
+** If still running**:
 ```http
 { "status": "Running" }
 ```
 
-** If complete (returns CSV):
+** If complete (returns CSV)**:
 ``` csv
 store_id, uptime_last_hour, uptime_last_day, uptime_last_week,
 downtime_last_hour, downtime_last_day, downtime_last_week
 ```
 
-** 📊 Example Output (CSV)
+** 📊 Example Output (CSV)**
 ```
 store_id,uptime_last_hour,downtime_last_hour,uptime_last_day,downtime_last_day,uptime_last_week,downtime_last_week
 1,60,0,24,0,160,8
@@ -105,25 +105,25 @@ store_id,uptime_last_hour,downtime_last_hour,uptime_last_day,downtime_last_day,u
 
 ## 🧠 Design Decisions
 
-** Timezone-aware processing: UTC → local conversion for correct alignment with business hours.
+** Timezone-aware processing**: UTC → local conversion for correct alignment with business hours.
 
-** Extrapolation logic: Last known status extended until next poll (or end of business hours).
+** Extrapolation logic**: Last known status extended until next poll (or end of business hours).
 
-** Trigger + Poll architecture: Enables scalable, long-running report computations.
+** Trigger + Poll architecture**: Enables scalable, long-running report computations.
 
-** Database-first approach: Ensures efficient querying and continuous updates from CSV streams.
+** Database-first approach**: Ensures efficient querying and continuous updates from CSV streams.
 
 
 ## 🔮 Future Improvements
 
 ### ⏱ Real-Time Data Processing
 
-** Replace CSV ingestion with Kafka or Pub/Sub
-** Move to near real-time updates
+** Replace CSV ingestion with Kafka or Pub/Sub**
+** Move to near real-time updates**
 
 ### 📊 Visualization
 
-** Dashboard with uptime/downtime trends
-** Grafana
+** Dashboard with uptime/downtime trends**
+** Grafana**
 
 
