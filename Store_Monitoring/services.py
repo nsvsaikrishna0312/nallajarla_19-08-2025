@@ -235,7 +235,6 @@ class StoreMonitoringService:
 
     def generate_report_background(self, report_id):
         try:
-            # Import the Flask app factory here
             from app import create_app
             app = create_app()
 
