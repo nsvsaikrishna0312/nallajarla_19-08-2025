@@ -51,11 +51,11 @@ def create_app():
 if __name__ == "__main__":
     try:
         app = create_app()
-        print("🚀 Starting Flask app on http://127.0.0.1:5000 ...")
+        print(" Starting Flask app on http://127.0.0.1:5000 ...")
         app.run(debug=True, host="127.0.0.1", port=5000)
     except Exception as e:
         import traceback
 
-        print("❌ Flask app failed to start!")
+        print(" Flask app failed to start!")
         traceback.print_exc()
 
